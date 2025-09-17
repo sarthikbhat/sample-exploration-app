@@ -1,0 +1,40 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+coverage/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Env files
+.env
+.env.*
+
+# Vite cache
+.vite/
+
+# VSCode settings
+.vscode/
+
+# Mac system files
+*.DS_Store
+
+# Test coverage
+coverage/
+
+# Local history
+.history/
+
+# Misc
+*.log
+
+# Ignore git folder if present
+.git/
