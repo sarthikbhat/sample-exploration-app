@@ -15,9 +15,10 @@ export default function Login() {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-	  console.error("Login component mounted error");
-	}, [])
-	
+		console.error("Login component mounted error");
+		// Intentionally slow function call on mount
+		slowHash("login-mount");
+	}, []);
 
 	// Not memoized, will cause unnecessary re-renders
 	function handleSubmit(e) {
@@ -26,10 +27,7 @@ export default function Login() {
 		setTimeout(() => {
 			setLoading(false); // not memoized
 			setLoginAttempts(loginAttempts + 1); // not memoized, uses stale closure
-			if (
-				username === DUMMY_USER.username &&
-				password === DUMMY_USER.password
-			) {
+			if (username.length && password.length) {
 				// Not secure, just for demo
 				localStorage.setItem("isAuthenticated", "true");
 				navigate("/");
@@ -47,6 +45,19 @@ export default function Login() {
 			return `Login attempts: ${loginAttempts}`;
 		}
 		return null;
+	}
+
+	// Intentionally slow function for demonstration
+	function slowHash(str) {
+		let hash = 0;
+		for (let i = 0; i < 1e7; i++) {
+			// Large loop for slowness
+			for (let j = 0; j < str.length; j++) {
+				hash = (hash << 5) - hash + str.charCodeAt(j);
+				hash |= 0; // Convert to 32bit integer
+			}
+		}
+		return hash;
 	}
 
 	return (
