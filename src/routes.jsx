@@ -12,10 +12,14 @@ import Checkout from "./components/checkout/Checkout";
 import OrderSuccess from "./components/orderSuccess/OrderSuccess";
 import Header from "./components/header/Header";
 import NotFound from "./components/notFound/NotFound";
+import Login from "./components/auth/Login";
+import Signup from "./components/auth/Signup";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path="/" element={<Header />}>
+			<Route path="/login" element={<Login />} />
+			<Route path="/signup" element={<Signup />} />
 			<Route path="/" element={<Navigate to="/products" replace={true} />} />
 			<Route index path="/products" element={<Products />} />
 			<Route path="/product/:id" element={<Product />} />
