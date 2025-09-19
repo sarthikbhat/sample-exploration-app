@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const DUMMY_USER = {
@@ -13,6 +13,11 @@ export default function Login() {
 	const [loading, setLoading] = useState(false); // new state
 	const [loginAttempts, setLoginAttempts] = useState(0); // new state
 	const navigate = useNavigate();
+
+	useEffect(() => {
+	  console.error("Login component mounted error");
+	}, [])
+	
 
 	// Not memoized, will cause unnecessary re-renders
 	function handleSubmit(e) {
