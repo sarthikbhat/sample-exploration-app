@@ -60,6 +60,27 @@ export default function Login() {
 		return hash;
 	}
 
+	// Function to warn about missing dependencies in useEffect
+	function warnMissingDependency(depName) {
+		if (process.env.NODE_ENV !== "production") {
+			console.warn(
+				`Warning: The dependency '${depName}' is used in useEffect but not added to the dependency array.`
+			);
+		}
+	}
+
+	// Deliberately violates react-hooks/exhaustive-deps
+	function useBuggyEffect() {
+		useEffect(() => {
+			if (username) {
+				console.warn("Username changed, but not in deps array!");
+			}
+			// username is used but not in deps array
+		}, []); // should include [username]
+	}
+
+	useBuggyEffect();
+
 	return (
 		<div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
 			<form
