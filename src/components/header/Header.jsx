@@ -23,14 +23,18 @@ export default function Header() {
 						</Link>
 						<Link to="/orders">My Orders</Link>
 						<div className="flex gap-1 items-center font-light" role="search">
-							<CiSearch className="text-md absolute" />
+							<label htmlFor="header-search" className="sr-only">
+								Search products
+							</label>
+							<CiSearch className="text-md absolute" aria-hidden="true" />
 							<input
 								className="outline-0 border-0 border-b-1 border-black/30 w-18 md:w-25 pl-6"
 								type="text"
 								name="search"
-								id="search"
+								id="header-search"
 								placeholder="Search"
 								autoComplete="off"
+								aria-label="Search products"
 							/>
 						</div>
 					</section>
